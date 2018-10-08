@@ -1,5 +1,10 @@
 package mavenproject.autokonfigurator;
 
+
+/**
+ * Die Klasse Autokonfigurator enthält alle Methoden die zur Ermittlung der Preise der Plattfrom und des
+ * gewählten Ausstattungspakets, sowie eine Methode zum Erstellen der Zusammenfassung der getätigten Auswahl
+ */
 public class Autokonfigurator {
 
     private Toyota auto = new Toyota();

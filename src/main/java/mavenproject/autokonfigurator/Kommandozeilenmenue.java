@@ -2,6 +2,9 @@ package mavenproject.autokonfigurator;
 import java.util.*;
 import java.text.SimpleDateFormat;
 
+/**
+ * Diese Klasse stellt alle Methoden für das Kommandozeilenemenü zur Verfügung
+ */
 public class Kommandozeilenmenue {
 
     Scanner scan = new Scanner(System.in);

@@ -3,6 +3,9 @@ package mavenproject.autokonfigurator;
 
 import java.util.HashMap;
 
+/**
+ * Die Klasse Toyota enthält alle Informationen zu einem Fahrzeug
+ */
 public class Toyota {
     private Enum<Plattform> plattform;
     private Enum<Ausstattung> ausstattung;
