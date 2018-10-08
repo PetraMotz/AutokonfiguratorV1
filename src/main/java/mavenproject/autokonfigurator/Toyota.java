@@ -1,4 +1,5 @@
-package PMO_maven1;
+
+package mavenproject.autokonfigurator;
 
 import java.util.HashMap;
 

@@ -1,4 +1,4 @@
-package PMO_maven1;
+package mavenproject.autokonfigurator;
 
 public enum Ausstattung {
     BASIC,

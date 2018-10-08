@@ -1,4 +1,4 @@
-package PMO_maven1;
+package mavenproject.autokonfigurator;
 import java.util.*;
 import java.text.SimpleDateFormat;
 
@@ -66,6 +66,8 @@ public class Kommandozeilenmenue {
             System.out.println("Ung\u00DCltige Auswahl");
             ausstattungsAuswahl();
         }
+
+        naechsterSchritt();
 
     }
 
