@@ -1,22 +1,26 @@
 package mavenproject.autokonfigurator;
 import java.util.*;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
 
 /**
  * Diese Klasse stellt alle Methoden für das Kommandozeilenemenü zur Verfügung
  */
 public class Kommandozeilenmenue {
-
+    public boolean end = false;
     Scanner scan = new Scanner(System.in);
     Autokonfigurator autokonfigurator = new Autokonfigurator();
     Toyota auto;
 
     public void starteMenu() {
         System.out.println("*****************Willkommen im Toyote-Autokonfigurator!*****************\n\n");
-        plattformAuswahl();
-
-        zusammenfassungAusgeben();
-        naechsterSchritt();
+        do {
+            plattformAuswahl();
+            zusammenfassungAusgeben();
+            naechsterSchritt();
+        }
+        while (end = false);
     }
 
     public void plattformAuswahl(){
@@ -70,8 +74,6 @@ public class Kommandozeilenmenue {
             ausstattungsAuswahl();
         }
 
-        naechsterSchritt();
-
     }
 
     public void zusammenfassungAusgeben(){
@@ -96,21 +98,22 @@ public class Kommandozeilenmenue {
         if (auswahl >=1 && auswahl <=4){
             switch (auswahl) {
                 case 1:
-                    GregorianCalendar date = new GregorianCalendar();
-                    Date now = new Date();
-                    date.setTime(now);
-                    date.add(Calendar.DAY_OF_MONTH,21);
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-                    System.out.println("Ihr neuer Toyota "+ auto.getPlattform()+ " wird am " + dateFormat.format(date)+ " geliefert");
+
+                    System.out.println("Ihr neuer Toyota "+ auto.getPlattform()+ " wird am " + getLieferdatum() + " geliefert");
                     System.out.println("Vielen Dank für Ihre Bestellung");
+                    end = true;
                     break;
 
                 case 2: int konfigAuswahl = konfigurationBearbeiten();
                 if (konfigAuswahl == 1) {
                     plattformAuswahl();
+                    zusammenfassungAusgeben();
+                    naechsterSchritt();
                 }
                 else {
                     ausstattungsAuswahl();
+                    zusammenfassungAusgeben();
+                    naechsterSchritt();
 
                 }
                     break;
@@ -118,6 +121,7 @@ public class Kommandozeilenmenue {
                 case 3: plattformAuswahl();
                 case 4:
                     System.out.println("Auf Wiedersehen!");
+                    end = true;
                     break;
             }
         }
@@ -146,6 +150,12 @@ public class Kommandozeilenmenue {
             konfigurationBearbeiten();
         }
         return 0;
+    }
+
+    public LocalDate getLieferdatum () {
+        LocalDate heute = LocalDate.now();
+        LocalDate lieferdatum = heute.plus(3, ChronoUnit.WEEKS);
+        return lieferdatum;
     }
 
 }
